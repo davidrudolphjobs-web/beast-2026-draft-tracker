@@ -253,12 +253,30 @@
     td.rank, th.rank-col { width: 26px; padding-right: 2px; padding-left: 4px; font-size: 11px; text-align: right; }
 
     /* Name column: flex-grow in fixed-layout table by not constraining its width */
-    td.name { min-width: 0; padding-left: 4px; padding-right: 4px; }
+    td.name { min-width: 0; padding-left: 4px; padding-right: 4px; vertical-align: top; padding-top: 8px; }
     td.name .avatar { width: 28px; height: 28px; }
-    td.name .link { gap: 6px; }
-    td.name .name-stack { min-width: 0; }
-    td.name .name-stack > span:first-child { font-size: 12px; }
-    td.name .tagline { font-size: 10px; max-width: 100%; }
+    td.name .link { gap: 6px; align-items: flex-start; }
+    td.name .name-stack { min-width: 0; flex: 1 1 auto; }
+    td.name .name-stack > span:first-child { font-size: 12px; line-height: 1.2; }
+    /* Tagline on its own line below the name — allow it to wrap, show 3-4 lines */
+    td.name .tagline {
+      font-size: 10px;
+      max-width: 100%;
+      white-space: normal;                 /* was nowrap — now wraps to multiple lines */
+      overflow: hidden;
+      text-overflow: clip;
+      line-height: 1.35;
+      margin-top: 3px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;               /* cap at 4 lines */
+      -webkit-box-orient: vertical;
+    }
+
+    /* Other cells align to the top so the data reads across from the name line */
+    td.rank, td.ht, td.wt, td.yd40, td.school, td.pos {
+      vertical-align: top;
+      padding-top: 10px;
+    }
 
     /* Shrink fixed columns so everything fits on a 375–414px viewport */
     td.ht, th.ht-col { width: 44px; font-size: 11px; padding: 4px 2px; }
