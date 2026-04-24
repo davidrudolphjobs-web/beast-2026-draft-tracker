@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>2026 DR Draft Tracker</title>
 <script>
   // Apply saved theme before paint to prevent flash
@@ -67,7 +67,10 @@
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;              /* safety: never horizontal-scroll */
+    -webkit-text-size-adjust: 100%;  /* iOS: don't auto-inflate text on load/rotation */
+    text-size-adjust: 100%;
   }
+  html { width: 100%; }
   header {
     position: sticky; top: 0; z-index: 10;
     background: var(--header-bg);
