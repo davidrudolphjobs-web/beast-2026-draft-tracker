@@ -224,11 +224,45 @@
   }
 
   @media (max-width: 720px) {
-    main { padding: 10px; }
-    td.school { display: none; }
-    th.school-col { display: none; }
-    input.field { font-size: 16px; } /* prevent iOS zoom */
+    /* --- Tighter header --- */
+    header { padding: 10px 12px; }
+    h1 { font-size: 16px; line-height: 1.15; }
+    .subtitle { display: none; }
     .stats { display: none; }
+    .key-hints { display: none; }
+    .toolbar { margin-top: 8px; gap: 6px; }
+    .tab { padding: 4px 8px; font-size: 11px; }
+    .tab .tab-count { margin-left: 3px; }
+    .filter-chk { padding: 4px 8px; font-size: 11px; }
+    button.btn { padding: 4px 8px; font-size: 11px; }
+
+    /* --- Main area --- */
+    main { padding: 10px; }
+    table { font-size: 12px; }
+    th { font-size: 9px; padding: 6px; }
+    td { padding: 4px 6px; }
+    td.rank { width: 26px; padding-right: 6px; font-size: 11px; }
+    td.name .avatar { width: 32px; height: 32px; }
+    td.name .link { gap: 8px; }
+    td.name .tagline { font-size: 10px; max-width: 200px; }
+
+    /* --- Hide Team + Pick # inputs on mobile --- */
+    td.team-cell, td.pick-cell,
+    th.team-col, th.pick-col { display: none; }
+
+    /* School stays visible — free column from dropped inputs */
+    td.school, th.school-col { display: table-cell; font-size: 11px; }
+
+    /* Input-zoom guard (when they do appear — only desktop now) */
+    input.field { font-size: 16px; }
+
+    /* --- Bottom toolbar (Export/Backup/Restore/Reset) --- */
+    footer {
+      padding: 14px 12px !important;
+      font-size: 12px;
+    }
+    footer .btn { flex: 1 1 auto; min-width: 0; }
+    footer #reset-btn { flex-basis: 100%; margin-top: 4px; margin-left: 0 !important; }
   }
 </style>
 </head>
@@ -500,9 +534,9 @@ function renderMain() {
         <th class="wt-col">WT</th>
         <th class="yd40-col">40</th>
         <th class="school-col">School</th>
-        <th>Pos</th>
-        <th>Team</th>
-        <th>Pick #</th>
+        <th class="pos-col">Pos</th>
+        <th class="team-col">Team</th>
+        <th class="pick-col">Pick #</th>
       </tr></thead>
       <tbody>
         ${players.map(rowHtml).join("")}
