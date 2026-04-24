@@ -250,7 +250,7 @@
   <div class="toolbar">
     <div class="tabs" id="tabs"></div>
     <label class="filter-chk">
-      <input type="checkbox" id="hide-drafted"> Hide drafted
+      <input type="checkbox" id="hide-drafted" checked> Hide drafted
     </label>
     <button class="btn" id="theme-btn" style="margin-left:auto" aria-label="Toggle theme">🌓 Theme</button>
   </div>
@@ -357,7 +357,7 @@ if (typeof DEFAULT_PICKS === "object") {
 let lastSavedAt = parseInt(localStorage.getItem(SAVED_AT_KEY) || "0", 10);
 // { "26": { team: "LV", pick: "1" }, ... }
 let currentView = "all"; // "all" or pos group
-let hideDrafted = false;
+let hideDrafted = true;
 
 function isDrafted(p) {
   if (!p) return false;
