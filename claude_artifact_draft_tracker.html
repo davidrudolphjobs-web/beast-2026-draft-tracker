@@ -298,6 +298,10 @@
     /* Input-zoom guard (when they do appear — only desktop now) */
     input.field { font-size: 16px; }
 
+    /* Disable sticky thead on mobile — the main header + sticky thead were
+       overlapping mid-table. Thead scrolls with the content now. */
+    th { position: static; top: auto; box-shadow: none; }
+
     /* --- Bottom toolbar (Export/Backup/Restore/Reset) --- */
     footer {
       padding: 14px 12px !important;
