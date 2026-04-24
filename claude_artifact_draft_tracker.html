@@ -66,6 +66,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;              /* safety: never horizontal-scroll */
   }
   header {
     position: sticky; top: 0; z-index: 10;
@@ -242,21 +243,36 @@
     button.btn { padding: 4px 8px; font-size: 11px; }
 
     /* --- Main area --- */
-    main { padding: 10px; }
-    table { font-size: 12px; }
-    th { font-size: 9px; padding: 6px; }
-    td { padding: 4px 6px; }
-    td.rank { width: 26px; padding-right: 6px; font-size: 11px; }
-    td.name .avatar { width: 32px; height: 32px; }
-    td.name .link { gap: 8px; }
-    td.name .tagline { font-size: 10px; max-width: 200px; }
+    main { padding: 8px 6px 40px; max-width: 100vw; overflow-x: hidden; }
+    table { font-size: 12px; table-layout: fixed; width: 100%; }
+    th { font-size: 9px; padding: 6px 4px; }
+    td { padding: 4px; }
+    td.rank, th.rank-col { width: 26px; padding-right: 2px; padding-left: 4px; font-size: 11px; text-align: right; }
+
+    /* Name column: flex-grow in fixed-layout table by not constraining its width */
+    td.name { min-width: 0; padding-left: 4px; padding-right: 4px; }
+    td.name .avatar { width: 28px; height: 28px; }
+    td.name .link { gap: 6px; }
+    td.name .name-stack { min-width: 0; }
+    td.name .name-stack > span:first-child { font-size: 12px; }
+    td.name .tagline { font-size: 10px; max-width: 100%; }
+
+    /* Shrink fixed columns so everything fits on a 375–414px viewport */
+    td.ht, th.ht-col { width: 44px; font-size: 11px; padding: 4px 2px; }
+    td.wt, th.wt-col { width: 34px; font-size: 11px; padding: 4px 2px; }
+    td.yd40, th.yd40-col { width: 38px; font-size: 11px; padding: 4px 2px; }
+    td.pos, th.pos-col { width: 48px; padding: 4px 2px; }
+    .pos-chip { font-size: 10px; padding: 2px 4px; }
 
     /* --- Hide Team + Pick # inputs on mobile --- */
     td.team-cell, td.pick-cell,
     th.team-col, th.pick-col { display: none; }
 
     /* School stays visible — free column from dropped inputs */
-    td.school, th.school-col { display: table-cell; font-size: 11px; }
+    td.school, th.school-col {
+      display: table-cell; font-size: 10px; padding: 4px; width: 58px;
+      white-space: normal; line-height: 1.15;
+    }
 
     /* Input-zoom guard (when they do appear — only desktop now) */
     input.field { font-size: 16px; }
