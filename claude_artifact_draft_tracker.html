@@ -252,11 +252,6 @@
     <label class="filter-chk">
       <input type="checkbox" id="hide-drafted"> Hide drafted
     </label>
-    <button class="btn" id="export-btn">Export CSV</button>
-    <button class="btn" id="backup-btn">💾 Save backup</button>
-    <button class="btn" id="restore-btn">📂 Restore</button>
-    <input type="file" id="restore-file" accept="application/json,.json" style="display:none">
-    <button class="btn danger" id="reset-btn">Reset all picks</button>
     <button class="btn" id="theme-btn" style="margin-left:auto" aria-label="Toggle theme">🌓 Theme</button>
   </div>
   <div class="key-hints">
@@ -267,6 +262,14 @@
 </header>
 
 <main id="main"></main>
+
+<footer style="max-width: 1280px; margin: 0 auto; padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+  <button class="btn" id="export-btn">Export CSV</button>
+  <button class="btn" id="backup-btn">💾 Save backup</button>
+  <button class="btn" id="restore-btn">📂 Restore</button>
+  <input type="file" id="restore-file" accept="application/json,.json" style="display:none">
+  <button class="btn danger" id="reset-btn" style="margin-left:auto">Reset all picks</button>
+</footer>
 
 
 <script>
